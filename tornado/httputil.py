@@ -345,6 +345,8 @@ class HTTPServerRequest(object):
         self._finish_time = None
 
         self.path, sep, self.query = uri.partition('?')
+
+        # 使用parse_qs解析查询参数，封装成字典返回
         self.arguments = parse_qs_bytes(self.query, keep_blank_values=True)
         self.query_arguments = copy.deepcopy(self.arguments)
         self.body_arguments = {}

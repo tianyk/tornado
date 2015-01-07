@@ -183,6 +183,8 @@ else:
                            encoding='latin1', errors='strict')
         encoded = {}
         for k, v in result.items():
+            # 每个Value都是一个列表。如果自己扩展的话也要将Value做成数组。
+            # 否则遇到string会去迭代string，取最后一个字符
             encoded[k] = [i.encode('latin1') for i in v]
         return encoded
 
